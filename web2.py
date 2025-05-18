@@ -106,11 +106,10 @@ font_prop = fm.FontProperties(fname=font_path)
 font_name = font_prop.get_name()
 
 # matplotlib 폰트 설정
-plt.rcParams['font.family'] = 'NanumGothic-Bold'
+plt.rcParams['font.family'] = font_name  
 plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 # 한글 폰트 설정
 # plt.rcParams['font.family'] = 'NanumGothic'  # Windows의 경우 '맑은 고딕'
-plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 plt.rcParams['figure.figsize'] = (10, 6)  # 기본 그래프 크기 설정
 plt.rcParams['axes.grid'] = True  # 그리드 표시
 plt.rcParams['axes.facecolor'] = '#f9f9f9'  # 그래프 배경색
