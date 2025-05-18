@@ -125,7 +125,7 @@ st.markdown("""
 @st.cache_resource
 def load_model():
     try:
-        model = joblib.load('./decision_tree_model.pkl')
+        model = joblib.load('./dt.pkl')
         return model
     except:
         st.error("모델 파일을 찾을 수 없습니다. 먼저 모델을 학습시켜 저장해주세요.")
