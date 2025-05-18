@@ -125,7 +125,7 @@ st.markdown("""
 @st.cache_resource
 def load_model():
     try:
-        model = joblib.load('decision_tree_model.pkl')
+        model = joblib.load('./decision_tree_model.pkl')
         return model
     except:
         st.error("모델 파일을 찾을 수 없습니다. 먼저 모델을 학습시켜 저장해주세요.")
@@ -137,7 +137,7 @@ model = load_model()
 @st.cache_data
 def load_full_train_data():
     try:
-        df = pd.read_csv('./data/track2_train_participant.csv')
+        df = pd.read_csv('./track2_train_participant.csv')
         # 파생 변수 계산
         df['초기장력차이'] = df['기준장력'] - df['장력1']
         return df
@@ -335,7 +335,7 @@ if not input_df.empty:
         @st.cache_data
         def load_train_data_for_shap():
             try:
-                df = pd.read_csv('./data/track2_train_participant.csv')
+                df = pd.read_csv('./track2_train_participant.csv')
                 # 필요한 특성만 선택
                 result_df = df[['장력1', '스피드1']].copy()
                 # 파생 변수 계산
