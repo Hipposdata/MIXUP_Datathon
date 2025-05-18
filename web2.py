@@ -101,7 +101,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 한글 폰트 설정
-plt.rcParams['font.family'] = 'Malgun Gothic'  # Windows의 경우 '맑은 고딕'
+plt.rcParams['font.family'] = 'NanumGothic-Bold'  # Windows의 경우 '맑은 고딕'
 plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 plt.rcParams['figure.figsize'] = (10, 6)  # 기본 그래프 크기 설정
 plt.rcParams['axes.grid'] = True  # 그리드 표시
