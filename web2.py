@@ -6,6 +6,7 @@ import pickle
 import joblib
 import shap
 from streamlit_shap import st_shap
+import matplotlib.font_manager as fm  # font_manager 추가
 
 # 페이지 설정 및 기본 레이아웃
 st.set_page_config(
