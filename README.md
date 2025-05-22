@@ -1,5 +1,8 @@
 # MIXUP_Datathon
 2025 MixUP AI Datathon Track 2 대회 정리
+
+2025년 5월 참여했던 '2025 MixUP AI Datathon Track 2'대회 코드 파일 정리 및 기록입니다.
+
 1. 대회 개요
 대회명: 2025 MixUP AI Datathon Track 2
 
