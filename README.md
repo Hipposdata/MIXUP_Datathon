@@ -8,7 +8,7 @@
 - **주최/주관**: Prometheus X BITAmin X TOBIG's
 - **후원/협찬**: upstage, WIZCORE, kpc, 한국생산성본부, 모두의연구소, 유가네닭갈비, MONSTER ENERGY
 - **참여 기간**: 2025년 5월 12일 (월) 10:00 ~ 5월 18일 (일) 7:00
-- **대회 링크**: [공식 대회 페이지](https://www.kaggle.com/competitions/2025-mix-up-ai-datathon-track2/overview)
+- **대회 링크**: [공식 대회 페이지](https://www.kaggle.com/competitions/2025-mix-up-ai-datathon-track2/overview) (캐글에서 진행) | [공식 노션 페이지](https://ai-prometheus.notion.site/2025-MixUP-AI-Datathon-Prometheus-X-BITAmin-X-TOBIG-s-1f08a75b869a804ba74ee2cd4906fcbd)
 - **문제 유형**: 
   - **과제 1**: 철강 공정 생산품의 OK/NG 예측 모델 개발
   - **과제 2**: 데이터 기반 생산공정 최적화 및 운용 전략 수립
