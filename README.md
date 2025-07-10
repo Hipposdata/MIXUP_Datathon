@@ -23,6 +23,8 @@
 #### 학습 데이터
 - **파일명**: `track2_train_participant.csv`
 - **규모**: 1,840행, 46개 컬럼
+![image](https://github.com/user-attachments/assets/5b9a0821-9ca6-4a87-90c1-e22fc5b8b012)
+
 
 #### 주요 변수 설명
 | 변수 그룹 | 변수명 | 설명 |
@@ -52,10 +54,15 @@
 
 ### 탐색적 데이터 분석 (EDA)
 - **Pandas Profiling Report** 활용하여 데이터 전체적인 특성 파악
+<img src="https://github.com/user-attachments/assets/7c2dd911-2ff7-4339-b981-94a0efd9e3ff" width="50%" alt="Pandas Profiling Report">
+
+
 - **핵심 발견사항**:
   - 특정 변수들의 Feature Importance가 매우 높음을 확인
-  - 기본 데이터만으로도 높은 성능(0.95 이상) 달성 가능
+  - 기본 데이터만으로도 높은 성능(0.95 이상) 달성 가능(전처리X, 파생변수X)  
   - 소수의 핵심 변수를 중심으로 한 피처 엔지니어링 전략 수립
+<img src="https://github.com/user-attachments/assets/3f839ce0-12fd-4305-919b-1a5bcaf588ad" width="50%" alt="Feature Importance">
+
 
 ### 데이터 전처리
 
@@ -76,18 +83,14 @@
 ### 피처 엔지니어링
 
 #### 도메인 지식 활용
-철강 공정에서 불량을 줄이기 위한 장력, 속도 제어 기술의 중요성을 확인했습니다.
+철강 공정단계에서 불량을 줄이기 위한 장력, 속도 제어를 통한 제어기술 존재 -> 장력/스피드가 청강 공정에 매우 중요한 변수임을 파악 
 
-**참고 논문**: "A Study on Development of Advanced Tension Control Method Using Speed Controller in Wire Rod Mill"
+**참고 논문**: "A Study on Development of Advanced Tension Control Method Using Speed Controller in Wire Rod Mill" (https://oasis.postech.ac.kr/handle/2014.oak/111947)  
+<img src="https://github.com/user-attachments/assets/1a20bef2-7780-460b-9cc6-c140863a45c9" width="50%" alt="피쳐 엔지니어링 과정 1">  
 
-#### 핵심 변수 도출
-- **타겟값과 피처 간 상관관계 분석**을 통해 스피드, 장력 관련 변수가 상위권임을 확인
-- **최종 선정 변수**:
-  - `스피드1`
-  - `초기장력차이` (기준장력 - 장력1)
 
-#### 변수 검증
-군집화 분석 결과, 새롭게 선정한 2개 변수가 타겟값을 극명하게 구분함을 확인했습니다.
+#### 다양한 가설기반 파생변수 생성
+<img src="https://github.com/user-attachments/assets/aff69ff9-c269-4015-a16e-d641d940e754" width="50%" alt="피쳐 엔지니어링 과정 2">  
 
 ## 🤖 모델링 및 실험
 
@@ -99,6 +102,10 @@
 5. **모델 최적화**: 선택된 피처로 최종 튜닝
 6. **앙상블 구축**: 스태킹, 보팅 등 다양한 앙상블 기법 적용
 7. **최종 예측**: 최적 모델로 예측 생성
+
+#### 다양한 모델 실험 결과     
+<img src="https://github.com/user-attachments/assets/ee05e90e-14cb-4055-bc9a-a2147a5bc426" width="50%" alt="모델 실험 결과">  
+
 
 ### 실험 설정
 
@@ -112,10 +119,14 @@
 ### 최종 모델 선정
 
 #### 전략: "Most Simple + Best Performance"
-- **사용 변수**: 2개 (`스피드1`, `초기장력차이`)
+- **사용 변수**: 2개 (`스피드1`, `초기장력차이(기준장력-장력1)`)
 - **결측치 처리**: KNN (k=5)
 - **최종 모델**: **Decision Tree** (depth=2)
 - **성능**: **Perfect Score (1.0)**
+  
+<img src="https://github.com/user-attachments/assets/29b57660-c3f0-46ad-abe1-794bc1abfb3e" width="50%" alt="군집화 분석 결과">  
+<img src="https://github.com/user-attachments/assets/98254ae2-1664-453f-a38e-a15d1764a05d" width="50%" alt="Decision Tree 모델">  
+
 
 #### 모델 선정 근거
 - 여러 모델 실험 결과 모두 완벽한 예측 성능(score = 1.0) 달성
@@ -125,23 +136,27 @@
 ## 📊 결과 및 인사이트
 
 ### 최종 성능
-공정 과정 중 2개 변수(`초기장력차이`, `스피드1`)의 임계값을 기준으로 **완벽한 공정불량 예측**이 가능함을 확인했습니다.
+공정 과정 중 2개 변수(`초기장력차이`, `스피드1`)의 임계값을 기준으로 **완벽한 공정불량 예측** 가능
+<img src="https://github.com/user-attachments/assets/e988cc86-6e71-43ab-911b-e3c40ce176cb" width="50%" alt="최종 모델 성능">
+
 
 ### 핵심 인사이트
 
 #### 변수 중요도 분석
-- **Variable Importance**, **SHAP 값**, **PDP Plot** 분석을 통해 초기 장력 및 초기 스피드가 불량률 절감의 핵심임을 확인
+- **Variable Importance**, **SHAP 값**, **PDP Plot** 분석을 통해 초기 장력 및 초기 스피드가 불량률 절감의 핵심
+<img src="https://github.com/user-attachments/assets/64194c03-0ed1-4d94-b1eb-c211a2607a16" width="50%" alt="변수 중요도 분석"> <img src="https://github.com/user-attachments/assets/e73e40df-f483-44fa-a5cf-98a5dbf4f6b8" width="50%" alt="SHAP 값 분석"> <img src="https://github.com/user-attachments/assets/52c17be0-e10c-4c2c-b74c-ddbdc3b40e5a" width="50%" alt="PDP Plot 분석">
 
 #### 시점별 영향도 분석
-장력, 스피드의 **초기값**이 중기/말기 값에 비해 불량률에 가장 큰 영향을 미침을 발견했습니다.
+장력, 스피드의 **초기값**이 중기/말기 값에 비해 불량률에 가장 큰 영향을 미침  
+<img src="https://github.com/user-attachments/assets/2ca223c1-49f2-46ee-8ce4-8a14c03e048e" width="50%" alt="시점별 영향도 분석">  
 
 #### 주요 시사점
-1. **장력1**, **기준장력**이 품질 결정의 핵심 요소
-2. **스피드1**도 동등하게 중요한 변수
-3. **공정 초기단계**에서 철강 불량여부 선제적 파악 가능
-4. 초기 장력 및 스피드 설정 시스템을 통한 품질 안정화 필수
+1. **기준장력** 대비 **장력1** / **스피드1** 이 품질 결정의 핵심 요소
+2. **공정 초기단계**에서 철강 불량여부 선제적 파악 가능
+3. 초기 장력 및 스피드 설정 시스템을 통한 품질 안정화 필수
 
 ## 🏭 실무 적용 방안
+<img src="https://github.com/user-attachments/assets/19e36d7c-05df-4488-923c-2f9d8eef04cc" width="15%" alt="실무 적용 방안">
 
 ### 대상 기업: 위즈코어 (WIZCORE)
 - **업종**: 제조업 분야 데이터 분석, AI 기술 기반 스마트 팩토리 운영
@@ -151,19 +166,16 @@
 - **목적**: 공정 초기단계에서 불량여부를 판단할 수 있는 실시간 제어 시스템
 - **기술**: Streamlit 활용
 - **링크**: [Steel Process Dashboard](https://mixupsteel.streamlit.app/)
+<img src="https://github.com/user-attachments/assets/025fc462-720e-4b01-9764-d39af7c2db25" width="50%" alt="실시간 대시보드">
 
 ## 💡 프로젝트 회고
 
-### 대회 특성 및 전략
-- 대회 초기부터 스코어 1.0 달성 팀이 등장하여 문제의 특성을 파악
-- **"Most Simple + Best Performance"** 전략 수립
-- 복잡한 모델보다는 **해석 가능성과 실용성**에 중점
+### 느낀 점/후기
+- 문제가 공개되자 마자 스코어 1.0인 팀이 등장했기에 해당 문제는 뭔가 잘못됐다고 생각했기에 추후 대회중에 문제가 바뀌거나 데이터가 추가되겠거니 싶었다. 하지만 그대로 진행된 터라 스코어 1.0을 쉽게 달성할 수 있을거라 생각하였고 이에 최대한 간단한 모델로 최대한 좋은 성능 달성을 목표로 하였다(most simple + best performance!)
+- 최종적으로 스코어 1.0 달성한 팀은 여럿 있었지만, 활용성 / 해석력 측면에서 당락이 갈린 대회였던 것 같다.
+- 스코어 1.0 달성은 제일 빠르진 않았지만(3번째) 운이 좋게도 분석시 세웠던 목표(most simple + best performance!)를 위해 최대한 적은 변수(2개) 사용, 해석이 매우 용이하며 모델이 매우 직관적이고 간단한 깊이(depth = 2)의 DT(Decision Tree) 모델로 스코어 1.0을 달성했던 것과 최종적으로 streamlit을 이용해 실시간으로 데이터 입력시 철강공정 불량 여부를 판단할 수 있도록 대쉬보드를 구성한 것이 좋은 성과를 낼 수 있었던 것 같다.
 
-### 성과 및 차별점
-- 스코어 1.0 달성 (3번째)
-- **최소 변수(2개)** 사용으로 모델 단순화
-- **깊이 2의 Decision Tree**로 직관적 해석 가능
-- **Streamlit 대시보드** 구현으로 실무 적용성 확보
+
 
 ### 핵심 성공 요인
 1. **도메인 지식** 기반 피처 엔지니어링
@@ -176,11 +188,11 @@
 ### 개발 환경
 - **언어**: Python
 - **시각화**: Streamlit
-- **협업**: Notion, VS Code
+- **협업**: Notion, VSCode
 
 ### 주요 라이브러리
 - **AutoML**: PyCaret
-- **최적화**: Optuna
+- **하이퍼파라미터 튜닝**: Optuna
 - **데이터 처리**: Pandas, NumPy
 - **모델링**: Scikit-learn
 - **시각화**: Matplotlib, Seaborn, Plotly
