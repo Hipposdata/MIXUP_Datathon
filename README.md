@@ -166,7 +166,10 @@
 - **목적**: 공정 초기단계에서 불량여부를 판단할 수 있는 실시간 제어 시스템
 - **기술**: Streamlit 활용
 - **링크**: [Steel Process Dashboard](https://mixupsteel.streamlit.app/)
-<img src="https://github.com/user-attachments/assets/025fc462-720e-4b01-9764-d39af7c2db25" width="50%" alt="실시간 대시보드">
+<img src="https://github.com/user-attachments/assets/025fc462-720e-4b01-9764-d39af7c2db25" width="50%" alt="실시간 대시보드">  
+
+https://github.com/user-attachments/assets/0da952b1-3d0a-4b74-9d3f-5e5a3cbf03ec
+
 
 ## 💡 프로젝트 회고
 
