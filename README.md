@@ -83,7 +83,7 @@
 ### 피처 엔지니어링
 
 #### 도메인 지식 활용
-철강 공정단계에서 불량을 줄이기 위한 장력, 속도 제어를 통한 제어기술 존재 -> 장력/스피드가 청강 공정에 매우 중요한 변수임을 파악 
+철강 공정단계에서 불량을 줄이기 위한 장력, 속도 제어를 통한 제어기술 존재 -> 장력/스피드가 철강 공정에 매우 중요한 변수임을 파악 
 
 **참고 논문**: "A Study on Development of Advanced Tension Control Method Using Speed Controller in Wire Rod Mill" (https://oasis.postech.ac.kr/handle/2014.oak/111947)  
 <img src="https://github.com/user-attachments/assets/1a20bef2-7780-460b-9cc6-c140863a45c9" width="50%" alt="피쳐 엔지니어링 과정 1">  
